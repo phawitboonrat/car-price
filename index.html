@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="myScript.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+ 
+  <title></title>
+  
+</head>
+<body>
+
+<form class="container-fluid">
+  <label><p id="demo">Car Price Predict</p></label>
+<!-- brand,province,colour,mile,old -->
+
+<div class="row">
+  <div class="col-md-4 col-xs-3">
+    <label>Brand</label>
+    <!-- <input type="text" class="form-control" id="field1" placeholder="text1"> -->
+    <select id="brand" class="form-control">
+      <!-- 'Toyota,Yaris', 'Nissan,Teana', 'Honda,Civic', 'Toyota,Vios', -->
+      <option>Toyota,Yaris</option>
+      <option>Nissan,Teana</option>
+      <option>Honda,Civic</option>
+      <option>Toyota,Vios</option>
+      <option>Mazda,2</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-3">
+    <label>Mile</label>
+    <input type="text" class="form-control" id="mile" placeholder="">
+    <!-- <select class="form-control" id="colour" >
+      <option>Honda1</option>
+      <option>Toyota2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select> -->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-3">
+    <label>Year</label>
+    <!-- <input type="text" class="form-control" id="field1" placeholder="text1"> -->
+    <select class="form-control" id="year" >
+      <option>1995</option>
+      <option>1996</option>
+      <option>1997</option>
+      <option>1998</option>
+      <option>1999</option>
+      <option>2000</option>
+      <option>2001</option>
+      <option>2002</option>
+      <option>2003</option>
+      <option>2004</option>
+      <option>2005</option>
+      <option>2006</option>
+      <option>2007</option>
+      <option>2008</option>
+      <option>2009</option>
+      <option>2010</option>
+      <option>2011</option>
+      <option>2012</option>
+      <option>2013</option>
+      <option>2014</option>
+      <option>2015</option>
+      <option>2016</option>
+      <option>2017</option>
+      <option>2018</option>
+      <option>2019</option>
+      <option>2020</option>
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-3">
+    <label>Colour</label>
+    <!-- <input type="text" class="form-control" id="field1" placeholder="text1"> -->
+    <select class="form-control" id="colour" >
+      <!-- ['แดง', 'ขาว', 'ดำ', 'เทา', 'น้ำตาล', 'ส้ม', 'อื่นๆ', 'เงิน','น้ำเงิน', 'เหลือง', 'ฟ้า', 'ทอง', 'เขียว', 'ครีม', 'ชมพู', 'ม่วง'] -->
+      <option>ขาว</option>
+      <option>แดง</option>
+      <option>ดำ</option>
+      <option>เทา</option>
+      <option>น้ำตาล</option>
+      <option>ส้ม</option>     
+      <option>เงิน</option>
+      <option>น้ำเงิน</option>
+      <option>เหลือง</option>
+      <option>ฟ้า</option>
+      <option>ทอง</option>
+      <option>เขียว</option>
+      <option>ครีม</option>
+      <option>ชมพู</option>
+      <option>ม่วง</option>
+      <option>อื่นๆ</option>
+      
+
+    </select>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-3">
+    <label>Province</label>
+    <!-- 'กรุงเทพและปริมณฑล', 'ภาคตะวันออก', 'ภาคกลาง', 'ภาคอีสาน',
+       'ภาคตะวันตก', 'ภาคใต้', 'ภาคเหนือ' -->
+    <!-- <input type="text" class="form-control" id="field1" placeholder="text1"> -->
+    <select class="form-control" id="province" >
+      <option>กรุงเทพและปริมณฑล</option>
+      <option>ภาคตะวันออก</option>
+      <option>ภาคกลาง</option>
+      <option>ภาคอีสาน</option>
+      <option>ภาคตะวันตก</option>
+      <option>ภาคเหนือ</option>
+    </select>
+  </div>
+</div>
+  
+  <!-- <div class="row">
+    <div class="col-md-6 col-xs-8">
+    <label>field 4</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="text3">
+    </div>
+   <div class="col-md-6 col-xs-8">
+    <label>field 6</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="text4">
+  </div> 
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 col-xs-12"
+    <label>field5</label>
+    <textarea class="form-control" rows="3"></textarea>
+  </div>
+  </div> -->
+<br>
+<button type="button" onclick="okBtn()" class="btn btn-primary">OK</button>
+<button type="button" onclick="cancleBtn()" class="btn btn-info">CANCEL</button>
+
+<output id="price"></output>
+
+  </form>
+</body>
+</html>
